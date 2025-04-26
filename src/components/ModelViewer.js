@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import * as THREE from "three";
 
 function ShirtModel({ customizations }) {
-  const { scene: baseModel } = useGLTF("/assets/models/shirt_base.glb");
+  const { scene: baseModel } = useGLTF("/assets/models/women_shirts.glb");
   const [model, setModel] = useState(null);
   const [parts, setParts] = useState({});
   const { scene } = useThree();
