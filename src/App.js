@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import { useState } from "react";
+import ModelViewer from "./components/ModelViewer";
+import CustomizationPanel from "./components/CustomizationPanel";
+import "./styles.css";
 
-function App() {
+export default function App() {
+  const [customizations, setCustomizations] = useState({
+    sleeves: "default",
+    collar: "default",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="model-viewer-container">
+        <ModelViewer customizations={customizations} />
+      </div>
+      <CustomizationPanel
+        customizations={customizations}
+        onChange={(part, value) =>
+          setCustomizations({ ...customizations, [part]: value })
+        }
+      />
     </div>
   );
 }
-
-export default App;
